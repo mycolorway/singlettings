@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'singlettings/version'
+require 'singletting/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "singlettings"
-  spec.version       = Singlettings::VERSION
+  spec.version       = Singletting::VERSION
   spec.authors       = ["Jingkai He"]
   spec.email         = ["jaxihe@gmail.com"]
   spec.description   = %q{A simple YML to singleton class solution for ruby programming language.}
