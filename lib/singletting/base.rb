@@ -23,6 +23,16 @@ module Singletting
         @ns = value.to_s if value
       end
 
+      # Override the hash method
+      def [](key)
+        value = current_branch.fetch key.to_s, nil
+        if value.is_a? Hash
+          self.new value
+        else
+          value
+        end
+      end
+
       def current_branch
         source unless @source
         return @source unless @ns
@@ -68,6 +78,15 @@ module Singletting
         raise NoSuchNamespaceError, "Source is empty. The namespace does not exist"
       else
         source[ns]
+      end
+    end
+
+    def [](key)
+      value = current_branch.fetch key.to_s, nil
+      if value.is_a? Hash
+        self.class.new value
+      else
+        value
       end
     end
 
