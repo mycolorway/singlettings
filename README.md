@@ -30,12 +30,38 @@ Or install it yourself as:
 
 - Place the configuration files anywhere you want. If the YAML file is named 'Setting', then:
 
-```
-  class Setting < Singletting::Base
-    source "#{dir_to_config_file"
-    ns :your_namespace # Well, a bit clojure flavour...
-  end
-```
+  ```(ruby)
+    class Setting < Singletting::Base
+      source "#{dir_to_config_file}"
+      ns :your_namespace # Well, a bit clojure flavour...
+    end
+  ```
+
+- Or Just in the lazy way, which will read the setting.yml file in the root directory:
+  ```(ruby)
+    class Setting < Singletting::Base
+    end
+  ```
+
+- Last but not least, you can use it as an global variable by calling:
+  ```(ruby)
+    SETTING = Singletting::Base.new("config/settings.yml", "development")
+  ```
+
+### Operations on the Singletting Object
+
+
+You can invoke the object by calling:
+  ```(ruby)
+    Setting["key1"] # => value1
+    Setting["key1"]["key2"] # => value2
+  ```
+
+Also by calling:
+  ```(ruby)
+    Setting.key1 # => value1
+    Setting.key1.key2 # => value2
+  ```
 
 ## Contributing
 
