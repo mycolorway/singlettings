@@ -56,6 +56,10 @@ You can invoke the object by calling as a hash:
     Setting["key1"] # => value1
     Setting["key1"]["key2"] # => value2
     Setting[:key1][:key2][:key3] # => value3
+
+    Setting.respond_to? :key1  # => true
+    Setting.key1.respond_to? :key2 # => true
+
   ```
 
 Also by calling:
@@ -63,6 +67,12 @@ Also by calling:
     Setting.key1 # => value1
     Setting.key1.key2 # => value2
   ```
+
+### Testing
+
+- It can be tested by running ```$ rake rspec```. You can debug it by calling ```$ rake console``` as well.
+
+- A rails 4.0 app called 'myapp' is included in the repo to test compatibility.
 
 ## Contributing
 

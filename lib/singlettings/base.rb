@@ -56,6 +56,11 @@ module Singlettings
           raise NoSuchKeyError, "#{key} does not exist"
         end
       end
+
+      def respond_to_missing?(method, include_private = false)
+        current_branch.keys.include? method.to_s ||
+          (raise NoSuchKeyError, "#{method} does not exist")
+      end
     end # class self
 
     def initialize(directory_or_hash, default_namespace= nil)
@@ -102,6 +107,11 @@ module Singlettings
       else
         raise NoSuchKeyError, "#{key} does not exist"
       end
+    end
+
+    def respond_to_missing?(method, include_private = false)
+      current_branch.keys.include? method.to_s ||
+        (raise NoSuchKeyError, "#{method} does not exist")
     end
   end
 
