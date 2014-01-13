@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Convention Usage for Rails App.
+### @TODO：Convention Usage for Rails App.
 
 - Create the yaml configuration file named 'singletting.yml' in 'config' directory. Then you can invoke it by calling ```Singletting.balh_blah_blah```
 
