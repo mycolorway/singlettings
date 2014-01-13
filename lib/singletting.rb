@@ -1,6 +1,5 @@
-require "singletting/version"
-require "singletting/base"
-
 module Singletting
-
+  require_relative "singletting/version"
+  require_relative "singletting/base"
+  require_relative "singletting/rails"
 end
