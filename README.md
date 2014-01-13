@@ -8,7 +8,7 @@ It greatly inspired from [Yettings](https://github.com/charlotte-ruby/yettings).
 
 Add this line to your application's Gemfile:
 
-    gem 'singlettings'
+    gem 'singlettings', git: "git@github.com:mycolorway/singlettings.git"
 
 And then execute:
 
@@ -20,9 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-### @TODO：Convention Usage for Rails App.
+### Convention Usage for Rails App.
 
-- Create the yaml configuration file named 'singletting.yml' in 'config' directory. Then you can invoke it by calling ```Singletting.balh_blah_blah```
+- Create the yaml configuration file named 'singletting.yml' or 'yetting.yml' in 'config' directory. Then you can invoke it by calling ```Singletting.balh_blah_blah``` or ```Yetting.balh_blah_blah```
 
 - Also you can put the configuration files in the 'config/singlettings' directory, the singleton classes will be mechanically generated as described above.
 
@@ -31,7 +31,7 @@ Or install it yourself as:
 - Place the configuration files anywhere you want. If the YAML file is named 'Setting', then:
 
   ```(ruby)
-    class Setting < Singletting::Base
+    class Setting < Singlettings::Base
       source "#{dir_to_config_file}"
       ns :your_namespace # Well, a bit clojure flavour...
     end
@@ -39,22 +39,23 @@ Or install it yourself as:
 
 - Or Just in the lazy way, which will read the setting.yml file in the root directory:
   ```(ruby)
-    class Setting < Singletting::Base
+    class Setting < Singlettings::Base
     end
   ```
 
 - Last but not least, you can use it as an global variable by calling:
   ```(ruby)
-    SETTING = Singletting::Base.new("config/settings.yml", "development")
+    SETTING = Singlettings::Base.new("config/settings.yml", "development")
   ```
 
 ### Operations on the Singletting Object
 
 
-You can invoke the object by calling:
+You can invoke the object by calling as a hash:
   ```(ruby)
     Setting["key1"] # => value1
     Setting["key1"]["key2"] # => value2
+    Setting[:key1][:key2][:key3] # => value3
   ```
 
 Also by calling:

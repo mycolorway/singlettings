@@ -1,15 +1,15 @@
 require "spec_helper"
 
-describe :Singletting do
+describe :Singlettings do
 
   describe "class level singletting" do
     before do
-      class DevelopmentSample < Singletting::Base
+      class DevelopmentSample < Singlettings::Base
         source "spec/sample.yml"
         ns :development
       end
 
-      class Sample < Singletting::Base
+      class Sample < Singlettings::Base
         source "spec/sample.yml"
       end
     end
@@ -42,10 +42,10 @@ describe :Singletting do
     end
   end
 
-  describe "instance level singletting" do
+  describe "instance level singlettings" do
     before do
-      @development_settings = Singletting::Base.new "spec/sample.yml", :development
-      @settings = Singletting::Base.new "spec/sample.yml"
+      @development_settings = Singlettings::Base.new "spec/sample.yml", :development
+      @settings = Singlettings::Base.new "spec/sample.yml"
     end
 
     context "method test" do

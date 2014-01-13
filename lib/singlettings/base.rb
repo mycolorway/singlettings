@@ -1,8 +1,8 @@
-require 'singletting/exceptions'
+require 'singlettings/exceptions'
 require 'yaml'
 
 require 'erb'
-module Singletting
+module Singlettings
   class Base < Hash
     attr_reader :source, :ns
     class << self

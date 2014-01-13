@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'singletting/version'
+require 'singlettings/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "singlettings"
-  spec.version       = Singletting::VERSION
+  spec.version       = Singlettings::VERSION
   spec.authors       = ["Jingkai He"]
   spec.email         = ["jaxihe@gmail.com"]
   spec.description   = %q{A simple YML to singleton class solution for ruby programming language.}
@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  # spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
