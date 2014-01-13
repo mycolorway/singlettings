@@ -9,7 +9,17 @@ module Singlettings
   end
 
   class Rails < ::Rails::Engine
-    initializer 'singlettings' do
+    # The priorities of ActiveSupport hooks are shown as below:
+    # =>  before_configuration
+    # =>  before_initialize
+    # =>  before_eager_load
+    # =>  action_controller
+    # =>  action_view
+    # =>  active_record
+    # =>  after_initialize
+    # Since Singlettings is for configuration,
+    # it should be loaded before configuration.
+    config.before_configuration do
       Singlettings.hook_rails!
     end
   end if defined?(::Rails)
