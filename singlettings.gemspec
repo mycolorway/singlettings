@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jaxihe@gmail.com"]
   spec.description   = %q{A simple YML to singleton class solution for ruby programming language.}
   spec.summary       = %q{A simple YML to singleton class solution for ruby programming language.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/mycolorway/singlettings"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
