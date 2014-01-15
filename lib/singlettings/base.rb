@@ -5,6 +5,7 @@ require 'erb'
 module Singlettings
   class Base < Hash
     attr_reader :source, :ns
+
     class << self
       # Basic Usage of source in class
       #   source "config/setting.yml"
@@ -47,11 +48,14 @@ module Singlettings
         key = method.to_s
         if current_branch.keys.include? key
           value = current_branch[key]
-          if value.is_a? Hash
-            self.new value
-          else
-            value
+
+          result = value.is_a?(Hash) ? self.new(value) : value
+
+          self.instance_eval do
+            define_singleton_method(key){ result }
           end
+
+          result
         else
           raise NoSuchKeyError, "#{key} does not exist"
         end
@@ -99,11 +103,14 @@ module Singlettings
       key = method.to_s
       if current_branch.keys.include? key
         value = current_branch[key]
-        if value.is_a? Hash
-          self.class.new value
-        else
-          value
+
+        result = value.is_a?(Hash) ? self.class.new(value) : value
+
+        self.class.class_eval do
+          define_method(key){ result }
         end
+
+        result
       else
         raise NoSuchKeyError, "#{key} does not exist"
       end
