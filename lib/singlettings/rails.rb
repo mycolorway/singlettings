@@ -24,7 +24,6 @@ module Singlettings
     end
   end if defined?(::Rails)
 
-  private
   def self.load_yaml_files!(load_path)
     # Load singletting.yml
     files = []
