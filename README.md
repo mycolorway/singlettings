@@ -8,7 +8,7 @@ It greatly inspired from [Yettings](https://github.com/charlotte-ruby/yettings).
 
 Add this line to your application's Gemfile:
 
-    gem 'singlettings', git: "git@github.com:mycolorway/singlettings.git"
+    gem 'singlettings', git: "git@github.com:jaxi/singlettings.git"
 
 And then execute:
 
