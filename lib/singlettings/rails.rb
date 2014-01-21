@@ -4,7 +4,7 @@ module Singlettings
   def self.hook_rails!
     if defined?(::Rails)
       config_path = "#{::Rails.root.to_s}/config/"
-      Singlettings.load_yaml_files! config_path
+      self.load_yaml_files! config_path
     end
   end
 
@@ -39,7 +39,7 @@ module Singlettings
     files += Dir.glob("#{load_path}singlettings/**/*.yml")
 
     files.each do |file|
-      Singlettings.eval_yaml file
+      self.eval_yaml file
     end
   end
 
@@ -51,7 +51,7 @@ module Singlettings
     else
       klass_name = "Singletting#{base_name}"
     end
-    Object.const_set(klass_name, Singlettings.eval_yaml_class(file))
+    Object.const_set(klass_name, self.eval_yaml_class(file))
   end
 
   # Return specified anonymous class
