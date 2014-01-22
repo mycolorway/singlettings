@@ -54,6 +54,16 @@ describe :Singlettings do
         end
       end
     end
+
+    describe "response to keyword" do
+      it "multiple level sample" do
+        DevelopmentSample["max"].should == {"a" => 1, "b" => 2, "min" => 3}
+        DevelopmentSample.max.should == {"a" => 1, "b" => 2, "min" => 3}
+
+        DevelopmentSample["max"]["min"].should == 3
+        DevelopmentSample.max.min.should == 3
+      end
+    end
   end
 
   describe "instance level singlettings" do
@@ -101,6 +111,16 @@ describe :Singlettings do
         [:adapter, :encoding, :password].each do |method|
           @settings.development.should respond_to(method)
         end
+      end
+    end
+
+    describe "response to keyword" do
+      it "multiple level sample" do
+        @development_settings["max"].should == {"a" => 1, "b" => 2, "min" => 3}
+        @development_settings.max.should == {"a" => 1, "b" => 2, "min" => 3}
+
+        @development_settings["max"]["min"].should == 3
+        @development_settings.max.min.should == 3
       end
     end
   end

@@ -79,6 +79,8 @@ module Singlettings
       end
 
       self.replace current_branch
+
+      eval_accessors
     end
 
     def current_branch
@@ -99,26 +101,18 @@ module Singlettings
       end
     end
 
-    def method_missing(method, *args, &block)
-      key = method.to_s
-      if current_branch.keys.include? key
+    def eval_accessors
+      current_branch.keys.each do |key|
         value = current_branch[key]
-
         result = value.is_a?(Hash) ? self.class.new(value) : value
-
-        self.class.class_eval do
-          define_method(key){ result }
+        self.instance_eval do
+          define_singleton_method(key){ result }
         end
-
-        result
-      else
-        raise NoSuchKeyError, "#{key} does not exist"
       end
     end
 
-    def respond_to_missing?(method, include_private = false)
-      current_branch.keys.include? method.to_s ||
-        (raise NoSuchKeyError, "#{method} does not exist")
+    def method_missing(method, *args, &block)
+      (raise NoSuchKeyError, "#{method} does not exist") || super
     end
   end
 

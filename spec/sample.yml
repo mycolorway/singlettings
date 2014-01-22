@@ -16,6 +16,10 @@ development:
   username: root
   password:
   socket: /tmp/mysql.sock
+  max:
+    a: 1
+    b: 2
+    min: 3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
