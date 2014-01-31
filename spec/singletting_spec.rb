@@ -124,4 +124,15 @@ describe :Singlettings do
       end
     end
   end
+
+  describe "resource test" do
+    it "can not work without resource" do
+      expect{
+        class RubyHero < Singlettings::Base
+          source
+        end
+        }.to raise_error Singlettings::FileNotSpecifiedError
+
+    end
+  end
 end

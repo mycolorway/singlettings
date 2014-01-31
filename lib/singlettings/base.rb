@@ -9,9 +9,9 @@ module Singlettings
     class << self
       # Basic Usage of source in class
       #   source "config/setting.yml"
-      #   source
       def source(directory = nil)
-        filename = directory ? directory : "#{self.ancestors[0].to_s.downcase}.yml"
+        raise FileNotSpecifiedError unless directory
+        filename = directory
         @erb_content = ERB.new(File.read(filename)).result # Set it in memory
         @source = @erb_content ? YAML.load(@erb_content) : {}
       end

@@ -1,5 +1,6 @@
 module Singlettings
-  require_relative "singlettings/version"
-  require_relative "singlettings/base"
-  require_relative "singlettings/rails"
+  require "singlettings/version"
+  require "singlettings/utils"
+  require "singlettings/base"
+  require "singlettings/rails"
 end
