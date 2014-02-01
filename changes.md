@@ -7,3 +7,8 @@
 ---
 
 - pack hook methods to hooker
+
+0.1.0
+---
+
+- dirty solution for Ruby to_ary bug

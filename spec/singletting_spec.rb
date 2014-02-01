@@ -132,7 +132,26 @@ describe :Singlettings do
           source
         end
         }.to raise_error Singlettings::FileNotSpecifiedError
+    end
+  end
 
+  context "can put singletting class" do
+    it ".singleton class" do
+      class Sample < Singlettings::Base
+        source "spec/sample.yml"
+      end
+
+      expect{
+        puts Sample
+      }.not_to raise_error
+    end
+
+    it ".instance" do
+      settings = Singlettings::Base.new "spec/sample.yml"
+
+      expect{
+        puts settings
+      }.not_to raise_error
     end
   end
 end

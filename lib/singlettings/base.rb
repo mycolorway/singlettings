@@ -45,6 +45,8 @@ module Singlettings
       end
 
       def method_missing(method, *args, &block)
+        super if method == :to_ary
+
         key = method.to_s
         if current_branch.keys.include? key
           value = current_branch[key]
@@ -112,6 +114,7 @@ module Singlettings
     end
 
     def method_missing(method, *args, &block)
+      super if method == :to_ary
       (raise NoSuchKeyError, "#{method} does not exist") || super
     end
   end
